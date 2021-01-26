@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Vos posts</h2>
+    <div class="list-group">
+      <li [ngClass]="{'list-group-item' : true,
+                      'list-group-item-success' : buttonLove === 'like',
+                      'list-group-item-danger' : buttonLove === 'dislike'}"
+          *ngFor="let post of posts; let i = index">
+        <div [ngStyle]="{color : 'black'}">
+        <h3 class="list-group-item-heading">
+          <p style="font-size:11px ;color: gray; position: absolute; right: 10%">Date de publication : {{ post.createAt | date : 'MM/dd, hh:mm'}}</p>
+          {{post.title}}
+        </h3>
+        <p class="list-group-item-text">{{ post.content }}</p>
+        <img style="max-width:400px" *ngIf="post.photo" [src]="post.photo">
+        <div>
+          <button style="margin-right: 1%; vertical-align: baseline" class="btn btn-success"
+                  (click)="onLove(post)">Love It !
+            <p>😍 {{post.like}}</p>
+          </button>
+          <button style="vertical-align: baseline" class="btn-danger"
+                  (click)="onDontlove(post)">Don't love it..
+            <p>☹ {{post.dislike}}</p>
+          </button>
+          <button class=" btn btn-danger pull-right"
+          (click)="onDeletePost(post)">Supprimer le post</button>
+        </div>
+        </div>
+      </li>
+    </div>
+    <button class="btn-primary" (click)="onNewPost()">Nouveau post</button>
+  </div>
+</div>
