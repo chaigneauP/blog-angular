@@ -3,6 +3,11 @@ import {PostsService} from '../services/posts.service';
 import {Router} from '@angular/router';
 import {Post} from '../models/Posts.models';
 import {Subscription} from 'rxjs';
+import { registerLocaleData} from '@angular/common';
+import localFr from '@angular/common/locales/fr';
+import localFrExtra from '@angular/common/locales/extra/fr';
+
+registerLocaleData(localFr, 'fr-FR', localFrExtra);
 
 @Component({
   selector: 'app-post-list',
